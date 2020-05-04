@@ -105,8 +105,8 @@ public class TableModelHosts extends AbstractTableModel {
     }
 
     public void addRow() {
-       addRow(new Host(null, null, "APPS", null,
-               null, null, "/tmp", null, "/tmp/fndload_wrapper.sh", "fndload_wrapper.sh"));
+       addRow(new Host("TEST", "test.example.com", "APPS", null,
+               System.getProperty("user.name"), null, "/tmp", ". /etc/oebsenv", "/bin/bash", null));
     }
 
     public void removeRow(int row) {
