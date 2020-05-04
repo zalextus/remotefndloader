@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<nlslangs>
+    <nlslang javaencoding="Cp1251" oracleencoding="RUSSIAN_RUSSIA.CL8MSWIN1251"/>
+    <nlslang javaencoding="Cp1251" oracleencoding="AMERICAN_AMERICA.CL8MSWIN1251"/>
+    <nlslang javaencoding="8859_5" oracleencoding="RUSSIAN_CIS.CL8ISO8859P5"/>
+    <nlslang javaencoding="8859_5" oracleencoding="AMERICAN_AMERICA.CL8ISO8859P5"/>
+    <nlslang javaencoding="UTF-8" oracleencoding="RUSSIAN_CIS.AL32UTF8"/>
+    <nlslang javaencoding="UTF-8" oracleencoding="AMERICAN_AMERICA.AL32UTF8"/>
+</nlslangs>
