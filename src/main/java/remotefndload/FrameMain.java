@@ -13,9 +13,12 @@ import remotefndload.history.HistoryMenuAction;
 import remotefndload.wf.sort.WfSortPanel;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -245,11 +248,36 @@ public class FrameMain extends JFrame {
                 }
             });
         panelSelectDownloadLdtFile.setLayout(gridBagLayout2);
-        textDownloadLdtFile.addKeyListener(new KeyAdapter() {
-            public void keyReleased(KeyEvent e) {
-                textDownloadLdtFile_keyReleased(e);
+        DocumentListener ldtFileListener = new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                try {
+                    trySelectLdtEntity(new File(e.getDocument().getText(0, e.getDocument().getLength())));
+                } catch (BadLocationException e1) {
+                    e1.printStackTrace();
+                }
             }
-        });
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                try {
+                    trySelectLdtEntity(new File(e.getDocument().getText(0, e.getDocument().getLength())));
+                } catch (BadLocationException e1) {
+                    e1.printStackTrace();
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+            }
+        };
+        textUploadLdtFile.getDocument().addDocumentListener(ldtFileListener);
+        textDownloadLdtFile.getDocument().addDocumentListener(ldtFileListener);
+//        textDownloadLdtFile.addKeyListener(new KeyAdapter() {
+//            public void keyReleased(KeyEvent e) {
+//                textDownloadLdtFile_keyReleased(e);
+//            }
+//        });
         buttonDownloadBrowse.setText("Browse...");
         buttonDownloadBrowse.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
