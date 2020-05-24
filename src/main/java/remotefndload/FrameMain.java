@@ -165,7 +165,7 @@ public class FrameMain extends JFrame {
         textDownloadFndloadLog.setEditable(false);
         listEntities.getSelectionModel().addListSelectionListener(new ListEntitiesSelectionListener());
         setEnabledParams(false);
-        Object[] nlsLangArray = nlsLangs.getNlsLangsList().stream().filter(i -> i.getEnabled() != null && i.getEnabled()).toArray();
+        Object[] nlsLangArray = nlsLangs.getEnabledNlsLangsStream().toArray();
         comboLanguage.setModel(new DefaultComboBoxModel(nlsLangArray));
         Object[] nlsLangArrayUpload = new Object[nlsLangArray.length + 1];
         nlsLangArrayUpload[0] = new NlsLang("", "", true); // ��� Upload ����� �� ��������� NLS_LANG
@@ -1298,7 +1298,7 @@ public class FrameMain extends JFrame {
         d.setSize(500, 400);
         d.setLocationRelativeTo(this);
         d.setVisible(true);
-        comboLanguage.setModel(new DefaultComboBoxModel(nlsLangs.getNlsLangsList().toArray()));
+        comboLanguage.setModel(new DefaultComboBoxModel(nlsLangs.getEnabledNlsLangsStream().toArray()));
         comboLanguage.setSelectedItem(nlsLang);
     }
 

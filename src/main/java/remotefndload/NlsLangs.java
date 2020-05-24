@@ -8,6 +8,7 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import java.io.File;
 import java.util.ArrayList;
+import java.util.stream.Stream;
 
 
 public class NlsLangs
@@ -98,6 +99,11 @@ public class NlsLangs
   public ArrayList<NlsLang> getNlsLangsList()
   {
     return list;
+  }
+
+  public Stream getEnabledNlsLangsStream()
+  {
+    return list.stream().filter(i -> i.getEnabled() != null && i.getEnabled());
   }
   
   public NlsLang getNlsLangByOracleName(String oracleEncoding) {
