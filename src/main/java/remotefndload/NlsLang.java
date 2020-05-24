@@ -1,42 +1,20 @@
 package remotefndload;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class NlsLang
 {
   private String oracleEncoding;
   private String javaEncoding;
+  private Boolean enabled;
 
-  public NlsLang()
-  {
-  }
-
-  public NlsLang(String oracleEncoding, String javaEncoding)
-  {
-    this.oracleEncoding = oracleEncoding;
-    this.javaEncoding = javaEncoding;
-  }
-
-  public void setOracleEncoding(String oracleEncoding)
-  {
-    this.oracleEncoding = oracleEncoding;
-  }
-
-  public String getOracleEncoding()
-  {
-    return oracleEncoding;
-  }
-
-  public void setJavaEncoding(String javaEncoding)
-  {
-    this.javaEncoding = javaEncoding;
-  }
-
-  public String getJavaEncoding()
-  {
-    return javaEncoding;
-  }
-  
-  public String toString() 
-  {
+  @Override
+  public String toString() {
     return oracleEncoding;
   }
 }

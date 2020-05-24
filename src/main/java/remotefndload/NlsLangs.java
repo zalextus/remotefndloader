@@ -60,8 +60,10 @@ public class NlsLangs
           decryptedOspassword = ospassword;
         }
 
+        String enabledStr = e.getAttribute("enabled");
+        Boolean enabled = Boolean.valueOf(enabledStr);
         NlsLang nlsLang =
-          new NlsLang(e.getAttribute("oracleencoding"), e.getAttribute("javaencoding"));
+          new NlsLang(e.getAttribute("oracleencoding"), e.getAttribute("javaencoding"), enabled);
         list.add(nlsLang);
       }
     }
@@ -83,6 +85,8 @@ public class NlsLangs
                                    nlsLang.getOracleEncoding());
       nlsLangtElement.setAttribute("javaencoding",
                                    nlsLang.getJavaEncoding());
+      nlsLangtElement.setAttribute("enabled",
+                                   nlsLang.getEnabled().toString());
       nlsLangsElement.appendChild(nlsLangtElement);
     }
 

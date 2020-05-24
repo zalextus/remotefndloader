@@ -13,7 +13,7 @@ public class TableModelNlsLangs
   private static final long serialVersionUID = 1L;
   private NlsLangs nlsLangs;
   private String[] columnNames =
-  { "Oracle Encoding", "Java Encoding" };
+  { "Oracle Encoding", "Java Encoding", "Enabled" };
 
   public TableModelNlsLangs(NlsLangs nlsLangs)
   {
@@ -32,7 +32,17 @@ public class TableModelNlsLangs
     return nlsLangs.getNlsLangsList().size();
   }
 
-//  @Override
+  @Override
+  public Class<?> getColumnClass(int columnIndex) {
+    switch (columnIndex) {
+      case 2:
+          return Boolean.class;
+      default:
+        return super.getColumnClass(columnIndex);
+    }
+  }
+
+  //  @Override
   public Object getValueAt(int rowIndex, int columnIndex)
   {
     NlsLang nlsLang = nlsLangs.getNlsLangsList().get(rowIndex);
@@ -42,6 +52,8 @@ public class TableModelNlsLangs
         return nlsLang.getOracleEncoding();
       case 1:
         return nlsLang.getJavaEncoding();
+      case 2:
+        return nlsLang.getEnabled();
       default:
         return null;
     }
@@ -70,6 +82,9 @@ public class TableModelNlsLangs
         break;
       case 1:
         nlsLang.setJavaEncoding((String) val);
+        break;
+      case 2:
+        nlsLang.setEnabled((Boolean) val);
         break;
     }
 
