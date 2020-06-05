@@ -516,7 +516,7 @@ public class FrameMain extends JFrame {
     }
 
     private void trySelectLdtEntity(File file) {
-        if (file.exists()) {
+        if (file.exists() && file.isFile() && file.canRead()) {
             Pattern p = Pattern.compile("@\\w+:patch/\\d+/import/\\w+\\.lct");
             try (BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(file)))) {
                 String line = null;
